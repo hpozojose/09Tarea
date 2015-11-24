@@ -9,7 +9,7 @@ from scipy import optimize as opt
 import os
 
 '''
-Este script calcula la constante de Hubble con los primeros datos
+Este script calcula la constante de Hubble con los segundos datos
 experimentales.
 '''
 
@@ -83,20 +83,22 @@ def bootstrap(d, v):
     limite_alto = Hprom[int(N_boot * 0.975)]
     fig2, ax2 = plt.subplots()
     plt.hist(H_prom, bins=30, facecolor='b')
-    plt.axvline(H_prom_0, color='r')
-    plt.axvline(limite_bajo, color='m')
-    plt.axvline(limite_alto, color='m')
+    plt.axvline(H_prom_0, color='r', label="H0 promedio")
+    plt.axvline(limite_bajo, color='m', label="limite inferior intervalo")
+    plt.axvline(limite_alto, color='m', label="limite superior intervalo")
     ax2.set_title("Pregunta 2: Simulacion con Bootstrap")
     ax2.set_xlabel("H [Km/s /Mpc]")
     ax2.set_ylabel("frecuencia")
+    plt.legend(fontsize=11)
     plt.savefig("Histograma_p2.jpg")
 
     print "El intervalo de confianza al 95% es: [{}:{}]".format(limite_bajo,
                                                                 limite_alto)
+    print "H0 promedio corresponde a: [{}]".format(H_prom_0)
     return H_prom_0
 
 
-def aprox(distancia, vel, H_prom):
+def aprox(distancia, vel, H_prom):[0.0135869453555:0.0145575178335]
     '''
     recibe el arreglo de distancias ,velocidades y Hs, las grafica y compara
     con los datos de muestra
