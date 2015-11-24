@@ -89,7 +89,7 @@ def bootstrap(d, v, H_0):
     ax2.set_title("Simulacion de bootstrap")
     ax2.set_xlabel("H [Km/s /Mpc]")
     ax2.set_ylabel("frecuencia")
-    # plt.savefig("bootstrap_p1.jpg")
+    # plt.savefig("bootstrap_p2.jpg")
     H1 = np.sort(H1)
     H2 = np.sort(H2)
     Hprom = np.sort(H_prom)
@@ -114,12 +114,12 @@ def aprox(distancia, vel, H1, H2, H_prom):
     fig.set_xlabel("Distancia [Mpc]")
     fig.set_ylabel("Velocidad [Km/s]polyfit")
     plt.legend(loc=2)
-    plt.savefig("hubble_1.jpg")
+    plt.savefig("hubble_p2.jpg")
     plt.show()
 
 # main
 
-name = "data/hubble_original.dat"
+name = "data/SNIa.dat"
 # y_scales = ?
 d, v = datos(name)
 H = bootstrap(d, v, H_0)
