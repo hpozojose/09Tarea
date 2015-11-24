@@ -78,16 +78,19 @@ def bootstrap(d, v):
     H_prom_0 = np.mean(H_prom)
     H1_0 = np.mean(H1)
     H2_0 = np.mean(H2)
-    fig2, ax2 = plt.subplots()
-    plt.hist(H_prom, bins=30)
-    plt.axvline(H_prom_0, color='r')
-    ax2.set_title("Simulacion de bootstrap")
-    ax2.set_xlabel("H [Km/s /Mpc]")
-    ax2.set_ylabel("frecuencia")
-    plt.savefig("Histograma_p1.jpg")
     Hprom = np.sort(H_prom)
     limite_bajo = Hprom[int(N_boot * 0.025)]
     limite_alto = Hprom[int(N_boot * 0.975)]
+    fig2, ax2 = plt.subplots()
+    plt.hist(H_prom, bins=30, facecolor='b')
+    plt.axvline(H_prom_0, color='r')
+    plt.axvline(limite_bajo, color='m')
+    plt.axvline(limite_alto, color='m')
+    ax2.set_title("Pregunta 1: Simulacion con Bootstrap")
+    ax2.set_xlabel("H [Km/s /Mpc]")
+    ax2.set_ylabel("frecuencia")
+    plt.savefig("Histograma_p1.jpg")
+
     print "El intervalo de confianza al 95% es: [{}:{}]".format(limite_bajo,
                                                                 limite_alto)
     return H_prom_0
@@ -101,7 +104,7 @@ def aprox(distancia, vel, H_prom):
     ax, fig = plt.subplots()
     plt.scatter(distancia, vel, label="Datos originales")
     fig.plot(distancia, H_prom*distancia, label="Modelo con H promedio")
-    fig.set_title("Datos originales y ajuste lineal")
+    fig.set_title("Pregunta 1: Datos originales y ajuste lineal")
     fig.set_xlabel("Distancia [Mpc]")
     fig.set_ylabel("Velocidad [Km/s]polyfit")
     plt.legend(loc=2)
@@ -111,7 +114,7 @@ def aprox(distancia, vel, H_prom):
 # main
 
 
-np.random.seed(3760)
+np.random.seed(43760)
 d, v = datos()
 H = bootstrap(d, v)
 aprox(d, v, H)
