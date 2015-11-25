@@ -13,6 +13,7 @@ Este script calcula la constante de Hubble con los primeros datos
 experimentales.
 '''
 
+
 def datos():
     '''
     Descarga los datos de un archivo y los retorna en columnas
@@ -29,11 +30,13 @@ def f_modelo1(H, x):
     '''
     return H * x
 
+
 def f_modelo2(H, v):
     '''
     Modelo 2 en funcion de la velocidad
     '''
     return v / H
+
 
 def func_a_minimizar_1cf(x, H):
     '''
@@ -49,6 +52,7 @@ def func_a_minimizar_2cf(v, H):
     '''
     params = H
     return f_modelo2(params, v)
+
 
 def bootstrap(d, v):
     '''

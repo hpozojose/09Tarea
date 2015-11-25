@@ -13,6 +13,7 @@ Este script encuentreala línea recta que mejor modela la relación entre el
 flujo en la banda i y la banda z
 '''
 
+
 def datos():
     '''
     Descarga los datos de un archivo y los retorna en columnas multiplicados
@@ -31,8 +32,8 @@ def mostrar_datos(banda_i, error_i, banda_z, error_z, c):
     grafica el ajuste lineal polyfit'''
     fig1 = plt.figure()
     ax1 = fig1.add_subplot(111)
-    ax1.errorbar(banda_i, banda_z, xerr=error_i, yerr=error_z, fmt="o", color='c',
-                 label="Muestra con error")
+    ax1.errorbar(banda_i, banda_z, xerr=error_i, yerr=error_z, fmt="o",
+                 color='c', label="Muestra con error")
     x = np.linspace(-100, 500, 600)
     ax1.plot(x, c[1] + x*c[0], color="r", label="Ajuste lineal")
     ax1.set_title("Muestra de Banda y Ajuste lineal")
